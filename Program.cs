@@ -90,7 +90,7 @@ namespace projectGit
             return decryptedText;
         }
 
-
+        //פונקציה לבדיקת תו ומפענחת
         static string ConvertedByAccii(string text)
         {
             string str ="";
