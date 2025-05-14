@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace projectGit
 {
@@ -75,19 +76,50 @@ namespace projectGit
             for( int i = 0; i < text.Length; i++)
             {
                 if (dictionaryEncrypte.ContainsKey(text[i]))
-                    decryptedText += dictionaryEncrypte[text[i]];
+                {
+                decryptedText += dictionaryEncrypte[text[i]];
+
+                }
                 else
+                {
+
                     decryptedText += text[i];
+                }
+
             }
             return decryptedText;
         }
 
+
+        static string ConvertedByAccii(string text)
+        {
+            string str ="";
+            string NewLowr = text.ToLower();
+            int atbsh=Convert.ToInt32('a'+'z');
+            Console.WriteLine(atbsh);
+            for (int i = 0; i < NewLowr.Length; i++) {
+
+                if (NewLowr[i]>'a'&& NewLowr[i] < 'z')
+                {
+                    str += ((char)(atbsh - Convert.ToInt32(NewLowr[i])));
+                }
+                else
+                {
+                    str += NewLowr[i];
+
+                }
+            }
+            return str;
+        }
 
 
 
         static void Main(string[] args)
         {
 
+            
+            Console.WriteLine(ConvertedByAccii("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.Gsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.Ylnyh szev yvvm kozxvw mvzi pvb olxzgrlmh. Mfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.Gsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.Dv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg. Erxglib rh mvzi. Hgzb ivzwb."));
+            Console.WriteLine("  \n");
             Console.WriteLine(decryptedText("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.Gsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.Ylnyh szev yvvm kozxvw mvzi pvb olxzgrlmh. Mfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.Gsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.Dv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg. Erxglib rh mvzi. Hgzb ivzwb."));
         }
     }
