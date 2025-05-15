@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace projectGit
     internal class Program
     {
 
+
+
+=======
        
         static string decryptedText (string text)
         {
@@ -113,14 +117,100 @@ namespace projectGit
         }
 
 
+      
+      <<<<<<< Scans_problematic_words
 
-        static void Main(string[] args)
-        {
+  
+            static List<string> problem_words = new List<string> { "Warrior", "Nahva", "Bomb", "Missile", "Secret" };
+
 
             
-            Console.WriteLine(ConvertedByAccii("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.Gsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.Ylnyh szev yvvm kozxvw mvzi pvb olxzgrlmh. Mfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.Gsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.Dv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg. Erxglib rh mvzi. Hgzb ivzwb."));
-            Console.WriteLine("  \n");
-            Console.WriteLine(decryptedText("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.Gsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.Ylnyh szev yvvm kozxvw mvzi pvb olxzgrlmh. Mfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.Gsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.Dv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg. Erxglib rh mvzi. Hgzb ivzwb."));
+
+            static List<string> from_string_to_list(string input)
+            {
+
+            List<string> input_string = new List<string>();
+
+            string word = "";
+            for (int i = 0; i < input.Length ; i++)
+            {
+                if (input[i] != ' ')
+                {
+                word += input[i];
+                }
+                else
+                {
+                    input_string.Add(word);
+                    word = "";
+                }
+            }
+            return input_string;
+            }
+
+
+            static int scanner_text(List<string> input_to_scan)
+            {
+
+                int count = 0;
+                foreach (string item in input_to_scan)
+                {
+                    for (int i = 0; i < problem_words.Count; i++) { 
+                        if (item == problem_words[i])
+                        {
+                            count ++;
+                        }
+                    }
+
+                }
+
+                return count;
+            }
+
+
+            static string finish_commit(int count, string first_input)
+            {
+                string comment = "";
+                if (count < 1)
+                 {
+                comment = $"its legal text \n {first_input}";
+                    }
+                if(count >1 && count <= 5)
+                {
+                    comment = $"warning \n {first_input} \n the count of bad words {count}";
+                //Console.WriteLine($"warning \n {first_input} \n the count of bad words {count}");
+                }
+                else if(count >5 && count <= 11)
+                {
+                    comment = $"warning danderaous \n {first_input} \n the count of bad words {count}";
+                    //Console.WriteLine($"warning danderaous \n {first_input} \n the count of bad words {count}");
+                }
+                else if(count >11 )
+                {
+                    comment = $"ultra alert warning danderaous \n {first_input}\n  the count of bad words{count}";
+                    //Console.WriteLine($"ultra alert warning danderaous \n {first_input}\n  the count of bad words{count}");
+                }
+                
+                return comment;
+            }
+
+        static string scans_problematic_words(string str, List<string> problrm_words)
+        {
+            // לעת עתה על מנת להימנע משגיאות
+            return string.Empty;
+        }
+        static void Main(string[] args)
+
+
+        {
+
+   string input =ConvertedByAccii("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.Gsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.Ylnyh szev yvvm kozxvw mvzi pvb olxzgrlmh. Mfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.Gsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.Dv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg. Erxglib rh mvzi. Hgzb ivzwb.");
+
+            List<string> text_to_check = from_string_to_list(input);
+            int count = scanner_text(text_to_check);
+
+            string comment = finish_commit(count, input);
+
+            Console.WriteLine(comment);
         }
     }
 }
