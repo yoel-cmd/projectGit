@@ -10,14 +10,8 @@ namespace projectGit
 {
     internal class Program
     {
-
-
-
-=======
-       
         static string decryptedText (string text)
         {
-
             string decryptedText = "";
 
             Dictionary<char, char> dictionaryEncrypte = new Dictionary<char, char>();
@@ -74,9 +68,7 @@ namespace projectGit
             dictionaryEncrypte.Add('X', 'C');
             dictionaryEncrypte.Add('Y', 'B');
             dictionaryEncrypte.Add('Z', 'A');
-
-
-
+            
             for( int i = 0; i < text.Length; i++)
             {
                 if (dictionaryEncrypte.ContainsKey(text[i]))
@@ -115,16 +107,7 @@ namespace projectGit
             }
             return str;
         }
-
-
-      
-      <<<<<<< Scans_problematic_words
-
-  
             static List<string> problem_words = new List<string> { "Warrior", "Nahva", "Bomb", "Missile", "Secret" };
-
-
-            
 
             static List<string> from_string_to_list(string input)
             {
